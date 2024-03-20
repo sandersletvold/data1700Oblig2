@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinobilletter</title>
+    <script src="script.js" type="application/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Styling i HTML pga. CSS dokument ikke skulle inkluderes -->
+    <style>
+        label {
+            display: inline-block;
+            width: 75px;
+            text-align: right;
+            margin-right: 10px;
+        }
+        input {
+            width: 100px;
+            margin-bottom: 5px;
+        }
+        #antall {
+            width: 50px;
+        }
+        .oppgave {
+            border-style: solid;
+            border-color: blue;
+            padding-bottom: 50px;
+            padding-left: 5px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+<div class="oppgave">
+    <h1>
+        Bestilling av kinobilletter
+    </h1>
+    <form>
+        <label for="velgfilm">Velg film:</label>
+        <select id="velgfilm">
+            <option id="default"></option>
+            <option>Konvoi</option>
+            <option>Snøsamfunnet</option>
+            <option>The Wolf of Wall Street</option>
+            <option>Bird Box</option>
+            <option>Tinder svindleren</option>
+        </select>
+
+        <br><br>
+        <label for="antall">Antall</label>
+        <input id="antall" type="number">
+
+        <br><br>
+        <label for="fornavn">Fornavn</label>
+        <input id="fornavn" type="text">
+
+        <br>
+        <label for="etternavn">Etternavn</label>
+        <input id="etternavn" type="text">
+
+        <br>
+        <label for="telefonnr">Telefonnr</label>
+        <input id="telefonnr" type="text">
+
+        <br>
+        <label for="epost">Epost</label>
+        <input id="epost" type="text">
+    </form>
+    <br>
+    <button onclick="kjopBilletter()">Kjøp billett</button>
+    <br>
+    <h2>Alle billetter</h2>
+    <p id="feilmldfelt"></p>
+    <p id="billettfelt"></p>
+    <button onclick="slettBilletter()">Slett alle billettene</button>
+</div>
+</body>
+</html>
