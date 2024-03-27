@@ -1,7 +1,5 @@
-// Deklarerer arrayet globalt, slik at slettBilletter funksjonen har tilgang til arrayet.
-let billettlagring = [];
-
-function kjopBilletter() {
+$("#kjopBillett").click(function () {
+    console.log("Test");
     /* Henter inputene fra HTML siden */
     let film = $("#velgfilm").val();
     let antall = $("#antall").val();
@@ -71,13 +69,14 @@ function kjopBilletter() {
     } else {
         $("#feilmldfelt").html(feilmld);
     }
-}
+});
 
-function slettBilletter() {
+$("#slettBillett").click(function () {
+    console.log("Test2");
     // Setter feltet billettene skrives ut til ""
     $("#billettfelt").html("");
     // Går gjennom lengden til billettarrayet og fjerner objektene med pop()
     for (let i of billettlagring) {
         billettlagring.pop();
     }
-}
+});

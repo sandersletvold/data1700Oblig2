@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinobilletter</title>
     <script src="script.js" type="application/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- Styling i HTML pga. CSS dokument ikke skulle inkluderes -->
     <style>
         label {
@@ -67,12 +67,12 @@
         <input id="epost" type="text">
     </form>
     <br>
-    <button onclick="kjopBilletter()">Kjøp billett</button>
+    <button id="kjopBillett">Kjøp billett</button>
     <br>
     <h2>Alle billetter</h2>
     <p id="feilmldfelt"></p>
     <p id="billettfelt"></p>
-    <button onclick="slettBilletter()">Slett alle billettene</button>
+    <button id="slettBillett">Slett alle billettene</button>
 </div>
 </body>
 </html>
