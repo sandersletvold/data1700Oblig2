@@ -1,5 +1,4 @@
-$("#kjopBillett").click(function () {
-    console.log("Test");
+function kjop() {
     /* Henter inputene fra HTML siden */
     let film = $("#velgfilm").val();
     let antall = $("#antall").val();
@@ -48,15 +47,10 @@ $("#kjopBillett").click(function () {
     }
 
     /* Hvis feilmld er tom string, betyr dette at alle input feltene er godkjente og billetten kjøpes */
-    let ut = "";
     if (feilmld === "") {
-        billettlagring.push(ordre);
-        for (let billett of billettlagring) {
-            ut += "Film: "+billett.film+"<br>"+"Antall: "+billett.antall+"<br>"+"Fornavn: "+billett.fornavn+"<br>"+
-                "Etternavn: "+billett.etternavn+"<br>"+"Telefonnr: "+billett.telefonnr+"<br>"+"Epost: "+billett.epost+"<br><br>";
-        }
-        $("#billettfelt").html(ut);
-        $("#feilmldfelt").html("");
+        $.post("/tilServer", ordre, function (){
+            hent();
+        });
 
         // Reset av input felt etter vellykket kjøp
         $("#velgfilm").val("");
@@ -69,14 +63,26 @@ $("#kjopBillett").click(function () {
     } else {
         $("#feilmldfelt").html(feilmld);
     }
-});
+};
 
-$("#slettBillett").click(function () {
-    console.log("Test2");
-    // Setter feltet billettene skrives ut til ""
-    $("#billettfelt").html("");
-    // Går gjennom lengden til billettarrayet og fjerner objektene med pop()
-    for (let i of billettlagring) {
-        billettlagring.pop();
+function slett() {
+    $.get("/slettLagring", function (){
+        hent();
+    })
+};
+
+function hent() {
+    $.get("/tilKlient", function (data){
+        utskrift(data);
+    })
+}
+
+let ut = "";
+function utskrift(ordre) {
+    for (let i of ordre) {
+        ut += "Film: "+i.film+"<br>"+"Antall: "+i.antall+"<br>"+"Fornavn: "+i.fornavn+"<br>"+
+            "Etternavn: "+i.etternavn+"<br>"+"Telefonnr: "+i.telefonnr+"<br>"+"Epost: "+i.epost+"<br><br>";
     }
-});
+    $("#billettfelt").html(ut);
+    $("#feilmldfelt").html("");
+}
