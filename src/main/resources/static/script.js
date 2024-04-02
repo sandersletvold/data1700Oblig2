@@ -18,32 +18,33 @@ function kjop() {
     };
 
     /* Regler for validering */
-    const navnRegex = /^[A-Za-z]+$/;
+    const navnRegex = /^[A-Åa-å]+$/;
     const telefonnrRegex = /^[0-9]+$/;
-    const epostRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const epostRegex = /^[a-åA-Å0-9._-]+@[a-åA-Å0-9.-]+\.[a-åA-Å]{2,4}$/;
     /*  "epostRegex" er hentet fra:
         https://emaillistvalidation.com/blog/email-validation-in-javascript-using-regular-expressions-the-ultimate-guide/
+        Z er endret til Å for å tilpasse norsk
     */
 
     /* Valideringen av alle feltene */
     let feilmld = "";
     if (film === "") {
-        feilmld += "Feil vedrørende din ordre ved: Velg film:"+"<br>";
+        feilmld += "Velg film<br>";
     }
     if (antall <= 0) {
-        feilmld += "Feil vedrørende din ordre ved: Antall"+"<br>";
+        feilmld += "Antall<br>";
     }
     if (!navnRegex.test(fornavn)) {
-        feilmld += "Feil vedrørende din ordre ved: Fornavn"+"<br>";
+        feilmld += "Fornavn<br>";
     }
     if (!navnRegex.test(etternavn)) {
-        feilmld += "Feil vedrørende din ordre ved: Etternavn"+"<br>";
+        feilmld += "Etternavn<br>";
     }
     if (!telefonnrRegex.test(telefonnr)) {
-        feilmld += "Feil vedrørende din ordre ved: Telefonnr"+"<br>";
+        feilmld += "Telefonnr<br>";
     }
     if (!epostRegex.test(epost)) {
-        feilmld += "Feil vedrørende din ordre ved: Epost"+"<br>";
+        feilmld += "Epost<br>";
     }
 
     /* Hvis feilmld er tom string, betyr dette at alle input feltene er godkjente og billetten kjøpes */
@@ -61,7 +62,7 @@ function kjop() {
         $("#epost").val("");
         /* Hvis ikke feilmld er en tom string, betyr dette at det er en feil i en eller flere av input feltene */
     } else {
-        $("#feilmldfelt").html(feilmld);
+        $("#feilmldfelt").html("<h2>Feil vedrørende din ordre ved</h2><strong>" + feilmld);
     }
 };
 
@@ -78,11 +79,11 @@ function hent() {
 }
 
 function utskrift(ordre) {
-    let ut = "";
+    let ut = "<table class='table'><tr><th class='active'>Film</th><th class='active'>Antall</th><th class='active'>Fornavn</th><th class='active'>Etternavn</th><th class='active'>Telefonnr</th><th class='active'>Epost</th></tr>";
     for (let i of ordre) {
-        ut += "Film: "+i.film+"<br>"+"Antall: "+i.antall+"<br>"+"Fornavn: "+i.fornavn+"<br>"+
-            "Etternavn: "+i.etternavn+"<br>"+"Telefonnr: "+i.telefonnr+"<br>"+"Epost: "+i.epost+"<br><br>";
+        ut += "<tr><td>" +i.film+ "</td><td>" +i.antall+ "</td><td>" +i.fornavn+ "</td><td>" + i.etternavn+ "</td><td>" +i.telefonnr+ "</td><td>" +i.epost+ "</td></tr>";
     }
+    ut += "</table>";
     $("#billettfelt").html(ut);
     $("#feilmldfelt").html("");
 }

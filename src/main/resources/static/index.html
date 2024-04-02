@@ -7,29 +7,6 @@
     <script src="script.js" type="application/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!-- Styling i HTML pga. CSS dokument ikke skulle inkluderes -->
-    <!--<style>
-        label {
-            display: inline-block;
-            width: 75px;
-            text-align: right;
-            margin-right: 10px;
-        }
-        input {
-            width: 100px;
-            margin-bottom: 5px;
-        }
-        #antall {
-            width: 50px;
-        }
-        .oppgave {
-            border-style: solid;
-            border-color: blue;
-            padding-bottom: 50px;
-            padding-left: 5px;
-            width: 400px;
-        }
-    </style> -->
 </head>
 <body>
 <div class="container">
@@ -38,7 +15,7 @@
             <h1>Bestilling av kinobilletter</h1>
             <form class="form">
                 <div class="form-group">
-                    <label for="velgfilm">Velg film:</label>
+                    <label for="velgfilm">Velg film</label>
                     <select id="velgfilm" class="form-control">
                         <option id="default"></option>
                         <option>Konvoi</option>
@@ -71,13 +48,11 @@
             </form>
             <button class="btn btn-primary" onclick="kjop()">Kjøp billett</button>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-8">
             <h2>Alle billetter</h2>
-            <div id="feilmldfelt"></div>
-        </div>
-        <div class="col-md-6">
             <div id="billettfelt"></div>
             <button class="btn btn-danger" onclick="slett()">Slett alle billettene</button>
+            <div id="feilmldfelt"></div>
         </div>
     </div>
 </div>
