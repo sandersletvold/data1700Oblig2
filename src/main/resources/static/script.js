@@ -77,8 +77,8 @@ function hent() {
     })
 }
 
-let ut = "";
 function utskrift(ordre) {
+    let ut = "";
     for (let i of ordre) {
         ut += "Film: "+i.film+"<br>"+"Antall: "+i.antall+"<br>"+"Fornavn: "+i.fornavn+"<br>"+
             "Etternavn: "+i.etternavn+"<br>"+"Telefonnr: "+i.telefonnr+"<br>"+"Epost: "+i.epost+"<br><br>";
